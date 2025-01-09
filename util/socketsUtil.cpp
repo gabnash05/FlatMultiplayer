@@ -1,5 +1,7 @@
 #include "../include/socketsUtil.hpp"
 
+// UTIL FUNCTIONS
+
 int createTCPIpV4Socket(void) {
   int socketFD = socket(AF_INET, SOCK_STREAM, 0);
   if (socketFD < 0) {

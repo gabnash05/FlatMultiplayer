@@ -31,7 +31,7 @@ int main() {
       continue;
     }
 
-    cout << "New client with socket " << clientSocket->socketFD << endl;
+    cout << "New client: " << clientSocket->socketFD << endl;
   }
 
   close(serverSocketFD);
