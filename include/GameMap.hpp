@@ -13,6 +13,10 @@ class GameMap {
     GameMap(int n);
 
     char checkGrid(int x, int y);
+
+    int getMapSize();
+
+    vector<vector<char>> getGrid();
     
     bool movePlayer(char player, int oldX, int oldY, int newX, int newY);
 

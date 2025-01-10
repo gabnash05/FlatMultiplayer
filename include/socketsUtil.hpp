@@ -8,6 +8,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <thread>
+#include <string>
 
 // Structure used to store accepted sockets when server is accepting connections
 struct AcceptedSocket {
@@ -37,5 +39,7 @@ sockaddr_in *createIPv4Address(const char *ip, int port);
   Returns an Accepted Socket Struct with all the information from the connection
 */
 AcceptedSocket *acceptConnection(int serverSocketFD);
+
+char convertSocketFDToPlayerId(int id);
 
 #endif //SOCKETUTIL_HPP

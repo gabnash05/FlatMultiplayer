@@ -9,6 +9,14 @@ char GameMap::checkGrid(int x, int y) {
   return grid[x][y];
 }
 
+int GameMap::getMapSize() {
+  return size;
+}
+
+vector<vector<char>> GameMap::getGrid() {
+  return grid;
+}
+
 bool GameMap::movePlayer(char player, int oldX, int oldY, int newX, int newY) {
   if (oldX >= 0 && oldX < size && oldY >= 0 && oldY < size && grid[oldX][oldY] == player && grid[newX][newY] == '.') {
     grid[oldX][oldY] = '.';

@@ -11,10 +11,14 @@ bool GameState::addClient(int playerId) {
   char player = convertPlayerIdToChar(playerId);
 
   //Random number generation
+  random_device rd;
+  mt19937 gen(rd());
+  uniform_int_distribution<> dis(0, mapSize - 1);
+
   int attempts = 0;
   while (attempts < mapSize * mapSize) {
-    int x = rand() % mapSize;
-    int y = rand() % mapSize;
+    int x = dis(gen);
+    int y = dis(gen);
 
     if (gameMap.addPlayer(player, x, y)) {
       clients[player] = {x, y};
@@ -56,10 +60,10 @@ bool GameState::moveClient(char playerID, Direction direction) {
   int dy = directionOffsets.at(direction).second;
 
   if (x + dx >= 0 && x + dx < mapSize && y + dy >= 0 && y + dy < mapSize) {
-    gameMap.movePlayer(player, x, y, x+dx, y+dy);
-
-    clients[player] = {x + dx, y + dy};
-    return true;
+    if (gameMap.movePlayer(player, x, y, x+dx, y+dy)) {
+      clients[player] = {x + dx, y + dy};
+      return true;
+    }
   }
 
   return false;

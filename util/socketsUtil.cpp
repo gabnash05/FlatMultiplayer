@@ -64,3 +64,5 @@ AcceptedSocket *acceptConnection(int serverSocketFD) {
 
   return newSocket;
 }
+
+char convertSocketFDToPlayerId(int id) { return (id % 26) + 'A'; }
